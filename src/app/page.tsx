@@ -1,5 +1,4 @@
 import { client } from "@/sanity/client";
-import { Event } from "@/types/eventType";
 import { defineQuery } from "next-sanity";
 import Link from "next/link";
 
@@ -11,7 +10,7 @@ const EVENTS_QUERY = defineQuery(`*[
 ]{_id, name, slug, date}|order(date desc)`);
 
 export default async function IndexPage() {
-  const events: Event[] = await client.fetch(EVENTS_QUERY, {}, options);
+  const events = await client.fetch(EVENTS_QUERY, {}, options);
 
   return (
     <main className="flex bg-gray-100 min-h-screen flex-col p-24 gap-12">
